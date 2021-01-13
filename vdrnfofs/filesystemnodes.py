@@ -113,13 +113,14 @@ class NfoNode(FileNode):
   <plot>%s</plot>
 </movie>
 """ % (info_vdr['T'], info_vdr['D'])
+            self._nfo_content = self._nfo_content.encode("utf-8")
         return self._nfo_content
 
     def size(self):
         return len(self.nfo_content())
 
     def read(self, offset, size):
-       return self.nfo_content()[offset:offset+size]
+        return self.nfo_content()[offset:offset+size]
 
     def release(self):
         pass

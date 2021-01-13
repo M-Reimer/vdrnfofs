@@ -29,7 +29,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import os
-from io import StringIO
+from io import BytesIO
 
 class ConcatenatedFileReader:
     def __init__(self, filenames):
@@ -38,7 +38,7 @@ class ConcatenatedFileReader:
         self.current_file = None
 
     def read(self, offset, size):
-        buffer = StringIO()
+        buffer = BytesIO()
         ptr = offset
         while (buffer.tell() < size):
             (filename, file_offset) = self.filename_from_offset(ptr)
@@ -47,7 +47,7 @@ class ConcatenatedFileReader:
                     if self.current_file:
                         self.current_file.close()
                     self.current_filename = filename
-                    self.current_file = open(filename, 'r')
+                    self.current_file = open(filename, 'rb')
                 self.current_file.seek(file_offset)
                 buffer.write(self.current_file.read(size - buffer.tell()))
                 ptr = offset + buffer.tell()
