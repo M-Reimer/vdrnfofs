@@ -20,23 +20,14 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-import os
-import re
+import setuptools
 
-from distutils.core import setup
-from distutils.file_util import copy_file
-from distutils.command.build_py import build_py
-from distutils.command.install_data import install_data
-from setuptools import setup, find_packages
-
-from glob import glob
-from subprocess import check_call
-
-setup (
+setuptools.setup (
     name='vdrnfofs',
+    python_requires='>3.0.0',
     version='1.0',
-    maintainer = "Tobias Grimm",
-    maintainer_email = "vdr@e.tobi.net",
+    maintainer = "Manuel Reimer, Tobias Grimm",
+    maintainer_email = "manuel.reimer@gmx.de",
     description = "Access VDR recordings as mpg and nfo files",
     license = "BSD",
     scripts = ['bin/vdrnfofs'],
