@@ -36,10 +36,10 @@ import fuse
 import traceback
 import logging
 
-from concatenated_file_reader import *
-from vdr import *
-from filesystemnodes import *
-from nodecache import *
+from vdrnfofs.concatenated_file_reader import *
+from vdrnfofs.vdr import *
+from vdrnfofs.filesystemnodes import *
+from vdrnfofs.nodecache import *
 
 fuse.fuse_python_api = (0, 2)
 

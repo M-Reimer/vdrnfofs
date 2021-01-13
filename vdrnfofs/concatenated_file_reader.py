@@ -29,7 +29,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import os
-from cStringIO import StringIO
+from io import StringIO
 
 class ConcatenatedFileReader:
     def __init__(self, filenames):

@@ -35,8 +35,8 @@ import stat
 import datetime
 import time
 
-from concatenated_file_reader import *
-from vdr import *
+from vdrnfofs.concatenated_file_reader import *
+from vdrnfofs.vdr import *
 
 class FileNode(object):
     def __init__(self, path, extension):

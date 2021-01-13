@@ -38,4 +38,4 @@ class InfoVdr:
                     self.values[line[0]] = line[2:]
 
     def __getitem__(self, key):
-        return self.values[key] if self.values.has_key(key) else ''
+        return self.values[key] if key in self.values else ''
