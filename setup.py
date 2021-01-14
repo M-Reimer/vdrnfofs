@@ -32,5 +32,8 @@ setuptools.setup (
     license = "BSD",
     scripts = ['bin/vdrnfofs'],
     packages = ['vdrnfofs'],
+    install_requires=[
+        'fuse-python'
+    ],
     test_suite = "tests",
 )
