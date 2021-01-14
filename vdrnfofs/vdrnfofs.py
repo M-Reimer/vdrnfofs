@@ -51,15 +51,13 @@ def format_exception_info(level = 6):
 def get_node(video, path):
     virtual_path, virtual_file_extension = os.path.splitext(path)
     if virtual_file_extension in ['.mpg', '.nfo']:
-        p = virtual_path.rfind('_')
-        if p > 0:
-            video_path = '/'.join((video, virtual_path[1:p], virtual_path[p+1:]))
-            if not os.path.isdir(video_path):
-               return None
-            elif virtual_file_extension == '.mpg':
-                return MpgNode(video_path)
-            elif virtual_file_extension == '.nfo':
-                return NfoNode(video_path)
+        # We expect this to be a file (based on extension)
+        parent_dir = os.path.dirname(path)
+        dirnode = DirNode(video + parent_dir)
+        for entry in dirnode.content():
+            if entry.file_system_name() == os.path.basename(path):
+                return entry
+        return None
     else:
         dir = video + path
         if os.path.isdir(dir):

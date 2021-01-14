@@ -46,7 +46,8 @@ class FileNode(object):
 
     def file_system_name(self):
         if not self._file_system_name:
-            self._file_system_name = '_'.join(self.path.rsplit('/', 3)[-2:]) + '.' + self.extension
+            path = self.path.encode(errors='replace').decode()
+            self._file_system_name = '_'.join(path.rsplit('/', 3)[-2:]) + '.' + self.extension
         return self._file_system_name
 
     def get_stat(self):
